@@ -26,51 +26,7 @@ const reactElement = React.createElement(
 )
 
 createRoot(document.getElementById('root')).render(
-
-    <App/>
-)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // <App />
     // reactElement
     // anotherElements
-
-
-
-// const reactElement = {
-//   type: "a",
-//   props: {
-//     href: "google.com",
-//     target: "_blank",
-//   },
-//   children: "Click me to visit google",
-// };
+    <App/>
+)

@@ -5,9 +5,14 @@ function App() {
 
   const addValue = () => {
     if (counter < 10) {
-      counter = counter + 1
-      setCounter(counter)
-      console.log("Button Clicked", counter)
+
+      // setCounter(counter + 1)
+      setCounter(prevCounter => prevCounter + 1 )
+      setCounter(prevCounter => prevCounter + 1 )
+      setCounter(prevCounter => prevCounter + 1 )
+      setCounter(prevCounter => prevCounter + 1 )
+
+
     }
   }
 
@@ -33,3 +38,15 @@ function App() {
 }
 
 export default App
+
+
+
+
+
+
+
+
+
+
+
+

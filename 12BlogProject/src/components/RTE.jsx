@@ -1,5 +1,5 @@
 import React from 'react'
-import { Editor, editor } from '@tinymce/tinymce-react'
+import { Editor } from '@tinymce/tinymce-react'
 import { Controller } from 'react-hook-form'
 
 export default function RTE({ name, control, defaultValue = "" }) {
@@ -47,15 +47,8 @@ export default function RTE({ name, control, defaultValue = "" }) {
                                    }
                               }
                               onEditorChange={onChange}
-
-
                          />
                     )}
-
-
-
-
-
                />
           </div>
      )

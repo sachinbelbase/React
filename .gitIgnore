@@ -6,3 +6,16 @@ App.css
 contextNotes.md
 eslint.config.js
 assets
+
+*.log
+logs
+**/*.backup.*
+**/*.back.*
+
+bower_components
+
+*.sublime*
+
+psd
+thumb
+sketch

@@ -19,9 +19,9 @@ function PostForm({ post }) {
      const navigate = useNavigate()
      const userData = useSelector(sate => sate.user.userData)
 
-     const submit = async(data => {
+     const submit = async(data) => {
           if (post) {
-               const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
+               const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
 
                if (file) {
                     appwriteService.deleteFile(post.featuredImage)
@@ -30,7 +30,7 @@ function PostForm({ post }) {
                const dbPost = await appwriteService.updatePost(post.$id, {
                     ...data,
                     featuredImage: file ? file.$id : undefined,
-               })
+               });
 
                if (dbPost) {
                     navigate(`/post/${dbPost.$id}`)
@@ -39,51 +39,46 @@ function PostForm({ post }) {
           }
 
           else {
-               const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null;
+               const file = await appwriteService.uploadFile(data.image[0]);
 
                if (file) {
-                    const fileId = file.$id
-                    data.featuredImage = fileId
-
-                    const dbPost = await appwriteService.createPost({
-                         ...data,
-                         userId: userData.$id,
-
-                    })
+                    const fileId = file.$id;
+                    data.featuredImage = fileId;
+                    const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
 
                     if (dbPost) {
-                         navigate(`/post/${dbPost.$id}`)
+                         navigate(`/post/${dbPost.$id}`);
                     }
                }
           }
-     })
+     };
 
      const slugTransform = useCallback((value) => {
           if (value && typeof value === "string")
                return value
                     .trim()
-                    .toLowercase()
-                    .replace(/^[a-zA-Z\d\s]+/g, '-')
+                    .toLowerCase()
+                    .replace(/[^a-zA-Z\d\s]+/g, '-')
                     .replace(/\s/g, '-')
-          return ""
+          return "";
 
-     }, [],)
+     }, []);
 
      useEffect(() => {
           const subscription = watch((value, { name }) => {
                if (name === 'title') {
-                    setValue('slug', slugTransform(value.title,
+                    setValue('slug', slugTransform(value.title),
                          {
                               shouldValidate: true
-                         }
-                    ))
+                         });
+                    
                }
-          })
+          });
 
           return () => {
-               subscription.unsubscribe()
-          }
-     }, [watch, slugTransform, setValue])
+               subscription.unsubscribe();
+          };
+          }, [watch, slugTransform, setValue]);
 
 
 

@@ -2,14 +2,22 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
-import { Provider } from 'react-redux'
+import {Provider } from 'react-redux'
 import store from './store/store.js'
-import { AuthLayout, Login, Signup, AllPosts, AddPost, EditPost } from './components/index.js'
-import { RouterProvider } from 'react-router-dom'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import { AuthLayout } from './components/index.js'
+
+import AddPost from './pages/AddPost.jsx'
+import Home from './pages/Home.jsx'
+import AllPosts from './pages/AllPost.jsx'
+import Post from './pages/Post.jsx'
+import Login from './pages/Login.jsx'
+import Signup from './pages/Signup.jsx'
+import EditPost from './pages/EditPost.jsx'
 
 
 
-const router = createBrowserRoot(
+const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
@@ -66,7 +74,7 @@ const router = createBrowserRoot(
         element: <Post />,
       },
     ]
-  }
+  }]
 )
 createRoot(document.getElementById('root')).render(
   <StrictMode>

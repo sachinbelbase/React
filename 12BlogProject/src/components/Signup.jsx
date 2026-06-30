@@ -7,6 +7,7 @@ import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 
 
+
 function Signup() {
      const navigate = useNavigate()
      const dispatch = useDispatch()
@@ -47,7 +48,7 @@ function Signup() {
                          </Link>
                     </p>
                     {error && <p className='text-red-600 mt-8 text-center'></p>}
-                    <form onSubmit={handleSubmit(create)}>
+                    <form onSubmit={handleSubmit(signup)}>
                          <div className='space-y-5'>
                               <Input
                                    label='Full-Name: '

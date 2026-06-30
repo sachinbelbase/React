@@ -1,6 +1,6 @@
 import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { Container, PostFrom } from '../components'
+import { Container, PostForm } from '../components'
 import { useEffect, useState } from 'react'
 import appwriteService from "../appwrite/config"
 
@@ -24,7 +24,7 @@ function EditPost() {
      }, [slug, navigate])
      return post ? <div className='py-8'>
           <Container>
-               <PostFrom post={post} />
+               <PostForm post={post} />
           </Container>
      </div> : null
 }

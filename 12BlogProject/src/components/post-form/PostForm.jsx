@@ -120,7 +120,7 @@ function PostForm({ post }) {
                          </div>
                     )}
                     <Select
-                         options={["active", "inactive"]}
+                         options={[true, false]}
                          label="Status"
                          className="mb-4"
                          {...register("status", { required: true })}

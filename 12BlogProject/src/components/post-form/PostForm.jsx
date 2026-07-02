@@ -20,6 +20,8 @@ function PostForm({ post }) {
      const userData = useSelector(state => state.auth.userData)
 
      const submit = async(data) => {
+          try{
+          console.log("Form Submitted", data);
           if (post) {
                const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
 
@@ -50,6 +52,10 @@ function PostForm({ post }) {
                          navigate(`/post/${dbPost.$id}`);
                     }
                }
+          }
+     }
+          catch (error) {
+               console.error(error);
           }
      };
 
@@ -120,7 +126,7 @@ function PostForm({ post }) {
                          </div>
                     )}
                     <Select
-                         options={[true, false]}
+                         options={["active", "inactive"]}
                          label="Status"
                          className="mb-4"
                          {...register("status", { required: true })}
